@@ -6,7 +6,7 @@ export function TourIntro() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <div className="absolute inset-0">
-        <CompoundLazy autoOrbit />
+        <CompoundLazy />
       </div>
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink" />
