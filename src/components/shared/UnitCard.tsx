@@ -8,7 +8,7 @@ export function UnitCard({ unit, index }: { unit: Unit; index: number }) {
     <motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.8, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
       className="group relative overflow-hidden rounded-sm border border-ivory/5 bg-ink2"
     >

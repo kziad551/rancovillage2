@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export function SplitReveal({
   children,
@@ -12,10 +13,12 @@ export function SplitReveal({
   delay?: number;
   as?: "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "p" | "div";
 }) {
+  const ref = useRef<HTMLElement | null>(null);
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   const words = children.split(" ");
   const Tag = as as React.ElementType;
   return (
-    <Tag className={className}>
+    <Tag ref={ref} className={className}>
       {words.map((w, i) => (
         <span
           key={i}
@@ -23,8 +26,7 @@ export function SplitReveal({
         >
           <motion.span
             initial={{ y: "110%" }}
-            whileInView={{ y: "0%" }}
-            viewport={{ once: true, margin: "-10%" }}
+            animate={inView ? { y: "0%" } : { y: "110%" }}
             transition={{
               duration: 0.9,
               delay: delay + i * 0.06,
